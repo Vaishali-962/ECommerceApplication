@@ -1,6 +1,6 @@
 package com.Tattva.dao;
 
-import com.Tattva.Models.User;
+import com.Tattva.models.User;
 
 public interface UserDao {
     boolean userRegistration(User user);

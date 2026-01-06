@@ -1,4 +1,4 @@
-package com.Tattva.Exception;
+package com.Tattva.exception;
 
 public class InvalidInputException extends RuntimeException{
     public InvalidInputException(String message){

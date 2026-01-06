@@ -1,4 +1,4 @@
-package com.Tattva.Models;
+package com.Tattva.models;
 
 public class User {
     // Fields

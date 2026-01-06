@@ -3,7 +3,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import com.Tattva.Exception.JDBCException;
+import com.Tattva.exception.JDBCException;
 public final class DataSourceConfig {
     // Fields
     private static final String URL = "jdbc:mysql://localhost:3306/e_commerce_app_db";

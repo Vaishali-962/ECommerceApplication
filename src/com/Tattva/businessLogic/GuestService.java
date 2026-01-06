@@ -1,6 +1,6 @@
 package com.Tattva.businessLogic;
 
-import com.Tattva.Exception.InvalidInputException;
+import com.Tattva.exception.InvalidInputException;
 import com.Tattva.dao.daoImpl.GuestDaoImpl;
 import com.Tattva.utility.Options;
 import com.Tattva.utility.RoleRegulator;

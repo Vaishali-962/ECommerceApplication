@@ -1,7 +1,7 @@
 package com.Tattva.businessLogic;
 import com.Tattva.dao.daoImpl.UserDaoImpl;
 import com.Tattva.utility.RoleRegulator;
-import com.Tattva.Models.User;
+import com.Tattva.models.User;
 import java.util.Scanner;
 
 
@@ -74,12 +74,14 @@ public class UserService implements RoleRegulator{
                 System.out.println("Please provide following details");
                 System.out.print("User Id :: ");
                 int userid = sc.nextInt();
-                System.out.print("User Name :: ");
-                String userName = sc.next();
                 sc.nextLine();
+                System.out.print("User Name :: ");
+                String userName = sc.nextLine();
                 System.out.print("Address :: ");
                 String address = sc.nextLine();
+
                 userDaoImpl.purchaseItem(userid, userName, address);
+                break;
 
         }
 

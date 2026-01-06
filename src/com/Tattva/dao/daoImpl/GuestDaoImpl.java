@@ -1,7 +1,7 @@
 package com.Tattva.dao.daoImpl;
 
-import com.Tattva.Exception.InvalidInputException;
-import com.Tattva.Exception.JDBCException;
+import com.Tattva.exception.InvalidInputException;
+import com.Tattva.exception.JDBCException;
 import com.Tattva.dao.GuestDao;
 import com.Tattva.dataSourceConfig.DataSourceConfig;
 

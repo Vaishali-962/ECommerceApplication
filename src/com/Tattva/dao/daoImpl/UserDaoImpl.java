@@ -1,7 +1,7 @@
 package com.Tattva.dao.daoImpl;
 
-import com.Tattva.Exception.JDBCException;
-import com.Tattva.Models.User;
+import com.Tattva.exception.JDBCException;
+import com.Tattva.models.User;
 import com.Tattva.dao.UserDao;
 import com.Tattva.dataSourceConfig.DataSourceConfig;
 import com.Tattva.utility.Options;
@@ -212,14 +212,19 @@ public class UserDaoImpl implements UserDao {
            ){
             ps1.setInt(1, userId);
             ResultSet rs1 = ps1.executeQuery();
-
+            if(!rs1.isBeforeFirst()){
+                System.out.println("🛑 Cart is empty. Purchase cancelled.");
+                return;
+            }
             while(rs1.next()){
                 int productId = rs1.getInt("product_id");
                 String productName = rs1.getString("product_name");
                 int quantity = rs1.getInt("quantity");
                 double price = rs1.getDouble("price");
                 int availableQuantity = 0;
-
+                if(quantity <= 0){
+                    continue;
+                }
                 ps2.setInt(1, productId);
                 ResultSet rs2 = ps2.executeQuery();
                 while (rs2.next()){
@@ -254,8 +259,10 @@ public class UserDaoImpl implements UserDao {
                     totalBillAmount += availableQuantity * price;
                 }
             }
+            if(totalBillAmount > 0){
             ps5.setInt(1,userId);
             ps5.executeUpdate();
+            }
             System.out.println("Username >> " + userName);
             System.out.println("Total Bill Amount >> " + totalBillAmount);
         }catch(Exception e){
