@@ -262,7 +262,9 @@ public class UserDaoImpl implements UserDao {
             if(totalBillAmount > 0){
             ps5.setInt(1,userId);
             ps5.executeUpdate();
+                System.out.println("🎉Purchase Successful 🎉");
             }
+
             System.out.println("Username >> " + userName);
             System.out.println("Total Bill Amount >> " + totalBillAmount);
         }catch(Exception e){

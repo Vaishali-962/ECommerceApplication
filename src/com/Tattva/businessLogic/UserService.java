@@ -31,8 +31,7 @@ public class UserService implements RoleRegulator{
 
                 // send this data to database
 
-                boolean userRegistrationSuccess = userDaoImpl.userRegistration(user);
-                return userRegistrationSuccess;
+                return userDaoImpl.userRegistration(user);
 
             case 2:
                 User user1 = new User();
@@ -43,13 +42,13 @@ public class UserService implements RoleRegulator{
                 user1.setPassword(sc.next());
                 // call method
                 userDaoImpl.userLogin(user1);
+                System.out.println("Choice Option from given list");
                 break;
             case 3:
                 System.out.println("----------------------------------------------------------------------------");
                 userDaoImpl.viewProductList();
                 System.out.println("----------------------------------------------------------------------------");
-
-
+                System.out.println("Add items to Cart >> Press 4");
                 break;
 
             case 4:
@@ -63,11 +62,16 @@ public class UserService implements RoleRegulator{
                 int quantity = sc.nextInt();
                 System.out.println("--------------------------------------");
                 boolean addedToCart = userDaoImpl.addToCart(userId,productId,quantity);
+                System.out.println("To view the cart >> Press 5");
+                System.out.println("To exit the application >> Press 0");
                 return addedToCart;
 
             case 5:
                 System.out.print("Please provide your UserId :: ");
                 userDaoImpl.viewCart(sc.nextInt());
+                System.out.println("To View Product list >> Press 3");
+                System.out.println("To buy all products from cart :: Press 6");
+                System.out.println("To exit the application >> Press 0");
                 break;
 
             case 6:
@@ -79,8 +83,9 @@ public class UserService implements RoleRegulator{
                 String userName = sc.nextLine();
                 System.out.print("Address :: ");
                 String address = sc.nextLine();
-
                 userDaoImpl.purchaseItem(userid, userName, address);
+                System.out.println("To View Product list >> Press 3");
+                System.out.println("To exit the application >> Press 0");
                 break;
 
         }
