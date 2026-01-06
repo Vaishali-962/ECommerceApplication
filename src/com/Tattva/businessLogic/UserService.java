@@ -5,7 +5,7 @@ import com.Tattva.Models.User;
 import java.util.Scanner;
 
 
-public class UserLogic extends RoleRegulator{
+public class UserService implements RoleRegulator{
     @Override
     public boolean displayRoleSpecificOptions(int option) {
         Scanner sc = new Scanner(System.in);
@@ -48,7 +48,7 @@ public class UserLogic extends RoleRegulator{
                 System.out.println("----------------------------------------------------------------------------");
                 userDaoImpl.viewProductList();
                 System.out.println("----------------------------------------------------------------------------");
-                System.out.println("Want to add product to cart >> Press 4");
+
 
                 break;
 
@@ -68,7 +68,18 @@ public class UserLogic extends RoleRegulator{
             case 5:
                 System.out.print("Please provide your UserId :: ");
                 userDaoImpl.viewCart(sc.nextInt());
+                break;
 
+            case 6:
+                System.out.println("Please provide following details");
+                System.out.print("User Id :: ");
+                int userid = sc.nextInt();
+                System.out.print("User Name :: ");
+                String userName = sc.next();
+                sc.nextLine();
+                System.out.print("Address :: ");
+                String address = sc.nextLine();
+                userDaoImpl.purchaseItem(userid, userName, address);
 
         }
 

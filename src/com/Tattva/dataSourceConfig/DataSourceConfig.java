@@ -18,7 +18,6 @@ public final class DataSourceConfig {
             throw new JDBCException("Class not found!");
         }
     }
-
     // constructor
     private DataSourceConfig(){}
 

@@ -8,7 +8,7 @@ import com.Tattva.utility.RoleRegulator;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Guest extends RoleRegulator {
+public class GuestService implements RoleRegulator {
     @Override
     public boolean displayRoleSpecificOptions(int option) {
         try {
@@ -19,7 +19,7 @@ public class Guest extends RoleRegulator {
                 System.out.print("Enter Option :: ");
                 int input = sc.nextInt();
                 guestObj.viewProduct(input);
-                System.out.println("To buy products, please do UserLogic registration");
+                System.out.println("👉To buy products, please do UserService registration by pressing 1.");
             }
         }
         catch(InputMismatchException e){

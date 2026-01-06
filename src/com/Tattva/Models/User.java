@@ -91,8 +91,6 @@ public class User {
     }
 
     // Overridden toString() method
-
-
     @Override
     public String toString() {
         return "User{" +

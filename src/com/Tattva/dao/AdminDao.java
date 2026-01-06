@@ -7,4 +7,5 @@ public interface AdminDao {
     void checkQuantity();
     void checkRegisteredUser();
     void checkParticularUserHistory();
+
 }
