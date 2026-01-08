@@ -185,7 +185,7 @@ public class UserDaoImpl implements UserDao {
                     System.out.println("****----****----****----****----****----****");
                 }
                 if(foundItem == false){
-                    System.out.println("Cart is empty");
+                    System.out.println("‼️Cart is empty ‼️");
                 }
 
         }catch(Exception e){
@@ -262,9 +262,10 @@ public class UserDaoImpl implements UserDao {
             ps5.executeUpdate();
                 System.out.println("🎉Purchase Successful 🎉");
             }
-
+            System.out.println("****----****----****----****----****----****");
             System.out.println("Username >> " + userName);
             System.out.println("Total Bill Amount >> " + totalBillAmount);
+            System.out.println("****----****----****----****----****----****");
         }catch(Exception e){
         System.out.println(e.getMessage());
         }

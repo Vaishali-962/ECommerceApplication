@@ -94,16 +94,19 @@ public class AdminDaoImpl implements AdminDao {
     public void checkQuantity(int productId) {
         boolean isDataFound = false;
         // query
-        String checkQuantityQuery = "SELECT available_quantity FROM products WHERE product_id = ?";
+        String checkQuantityQuery = "SELECT product_name, available_quantity FROM products WHERE product_id = ?";
         try(Connection con = DataSourceConfig.getConnection();
             PreparedStatement ps = con.prepareStatement(checkQuantityQuery)){
             ps.setInt(1,productId);
             ResultSet resultSet = ps.executeQuery();
             while(resultSet.next()){
                 isDataFound = true;
+                String productName = resultSet.getString("product_name");
                 int quantity = resultSet.getInt("available_quantity");
+                System.out.println("---------------------------------------------------------------------");
                 System.out.println("Product ID :: " + productId);
-                System.out.println("Quantity :: " + quantity);
+                System.out.println("Product Name :: " + productName +"\nQuantity :: " + quantity);
+                System.out.println("---------------------------------------------------------------------");
             }
             if(!isDataFound){
                 System.out.println("No data found for given Product Id");

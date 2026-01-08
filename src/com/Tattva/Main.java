@@ -1,6 +1,5 @@
 package com.Tattva;
 import com.Tattva.businessLogic.AdminService;
-import com.Tattva.models.User;
 import com.Tattva.businessLogic.UserService;
 import com.Tattva.utility.initialMessage;
 import com.Tattva.utility.Options;
@@ -47,6 +46,7 @@ public class Main {
                         input = getInput(sc);
                         break;
                     case 14:
+                        System.out.println("🎉 Welcome to Guest Mode 🎉");
                         guestService.displayRoleSpecificOptions(14);
                         input = getInput(sc);
                         break;

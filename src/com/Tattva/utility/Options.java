@@ -11,15 +11,15 @@ public class Options {
     }
     public static void userOptions(){
         System.out.println("Product List >> Press 3");
-        System.out.println("Buy Product >> Press 4");
+        System.out.println("Add to Cart >> Press 4");
         System.out.println("View Cart >> Press 5");
-        System.out.println("Generate Bill >> Press 6");
+        System.out.println(" Purchase Items from Cart >> Press 6");
         System.out.println("Exit >> Press 0");
         System.out.println();
     }
     public static void adminOptions(){
         System.out.println("Add new product >> Press 7");
-        System.out.println("Calculate the Bill >> Press 8");
+        System.out.println("Calculate the Bill using User ID >> Press 8");
         System.out.println("Display Amount to EndUser >> Press 9");
         System.out.println("Check Product Quantity >> Press 10");
         System.out.println("See Registered User >> Press 11");
