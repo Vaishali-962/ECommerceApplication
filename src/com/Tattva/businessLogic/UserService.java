@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 
 public class UserService implements RoleRegulator{
+    boolean isLoggedIn = false;
     @Override
     public boolean displayRoleSpecificOptions(int option) {
         Scanner sc = new Scanner(System.in);
@@ -28,11 +29,8 @@ public class UserService implements RoleRegulator{
                 user.setMailId(sc.next());
                 System.out.print("Mobile Number :: ");
                 user.setMobileNumber(sc.next());
-
                 // send this data to database
-
                 return userDaoImpl.userRegistration(user);
-
             case 2:
                 User user1 = new User();
                 System.out.println("Please enter valid credentials for Login");
@@ -41,17 +39,22 @@ public class UserService implements RoleRegulator{
                 System.out.print("Password :: ");
                 user1.setPassword(sc.next());
                 // call method
-                userDaoImpl.userLogin(user1);
+                isLoggedIn = userDaoImpl.userLogin(user1);
                 System.out.println("Choice Option from given list");
                 break;
             case 3:
+                if(isLoggedIn){
                 System.out.println("----------------------------------------------------------------------------");
                 userDaoImpl.viewProductList();
                 System.out.println("----------------------------------------------------------------------------");
                 System.out.println("Add items to Cart >> Press 4");
                 break;
-
+                } else{
+                    System.out.println("‼️ Login is mandatory to use user services ‼️");
+                    break;
+                }
             case 4:
+                if(isLoggedIn){
                 System.out.println("Please provide following details");
                 System.out.println("--------------------------------------");
                 System.out.print("User Id :: ");
@@ -65,16 +68,24 @@ public class UserService implements RoleRegulator{
                 System.out.println("To view the cart >> Press 5");
                 System.out.println("To exit the application >> Press 0");
                 return addedToCart;
-
+                }else{
+                    System.out.println("‼️ Login is mandatory to use user services ‼️");
+                    break;
+                }
             case 5:
+                if(isLoggedIn){
                 System.out.print("Please provide your UserId :: ");
                 userDaoImpl.viewCart(sc.nextInt());
                 System.out.println("To View Product list >> Press 3");
                 System.out.println("To buy all products from cart :: Press 6");
                 System.out.println("To exit the application >> Press 0");
                 break;
-
+                }else{
+                    System.out.println("‼️ Login is mandatory to use user services ‼️");
+                    break;
+                }
             case 6:
+                if (isLoggedIn){
                 System.out.println("Please provide following details");
                 System.out.print("User Id :: ");
                 int userid = sc.nextInt();
@@ -87,6 +98,10 @@ public class UserService implements RoleRegulator{
                 System.out.println("To View Product list >> Press 3");
                 System.out.println("To exit the application >> Press 0");
                 break;
+                }else{
+                    System.out.println("‼️ Login is mandatory to use user services ‼️");
+                    break;
+                }
         }
         return false;
     }

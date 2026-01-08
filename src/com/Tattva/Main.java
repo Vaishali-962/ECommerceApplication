@@ -11,8 +11,6 @@ public class Main {
     public static void main(String[] args){
         startApplication();
     }
-
-
     private static void startApplication() {
         Scanner sc = new Scanner(System.in);
         GuestService guestService = new GuestService();

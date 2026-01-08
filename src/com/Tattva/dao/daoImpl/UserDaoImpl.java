@@ -44,6 +44,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public boolean userLogin(User user) {
+        boolean isLoggedIn = false;
         String userLoginQuery = "SELECT user_id, user_name FROM registered_user_details " +
                 "WHERE user_name = ? AND password = ?";
         try(Connection con = DataSourceConfig.getConnection();
@@ -52,6 +53,7 @@ public class UserDaoImpl implements UserDao {
             ps.setString(2, user.getPassword());
             ResultSet resultSet = ps.executeQuery();
             if(resultSet.next()){
+                isLoggedIn = true;
                 System.out.println("🎉 Logged-In Successful 🎉");
                 int userId = resultSet.getInt("user_id");
                 String username = resultSet.getString("user_name");
@@ -62,7 +64,7 @@ public class UserDaoImpl implements UserDao {
                 System.out.println("****----****----****----****----****----****");
                 System.out.println();
                 Options.userOptions();
-                return true;
+                return isLoggedIn;
             }else{
                 System.out.println("Invalid Username and password!!");
                 return false;
