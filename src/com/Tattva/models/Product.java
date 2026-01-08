@@ -10,14 +10,6 @@ public class Product {
     // constructor
     public Product() {}
 
-    public Product(int productId, String productName, String productDescription, int availableQuantity, double price) {
-        this.productId = productId;
-        this.productName = productName;
-        this.productDescription = productDescription;
-        this.availableQuantity = availableQuantity;
-        this.price = price;
-    }
-
     // getter and setter methods
 
     public int getProductId() {
@@ -60,17 +52,4 @@ public class Product {
         this.price = price;
     }
 
-    // to string method
-
-
-    @Override
-    public String toString() {
-        return "Product{" +
-                "productId=" + productId +
-                ", productName='" + productName + '\'' +
-                ", productDescription='" + productDescription + '\'' +
-                ", availableQuantity=" + availableQuantity +
-                ", price=" + price +
-                '}';
-    }
 }

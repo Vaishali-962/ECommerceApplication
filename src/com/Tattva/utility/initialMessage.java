@@ -8,6 +8,5 @@ public class initialMessage {
         System.out.println(" >> 🌻Authentic. Reliable. Yours 🌻<<");
         System.out.println("---------------------------------------------");
         System.out.println();
-
     }
 }

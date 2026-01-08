@@ -1,5 +1,3 @@
 package com.Tattva.models;
 
-public class Guest {
-
-}
+public class Guest { }

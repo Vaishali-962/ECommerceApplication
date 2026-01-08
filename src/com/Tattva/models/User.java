@@ -12,18 +12,6 @@ public class User {
     private String mobileNumber;
     // No-args Constructors
     public User() {}
-    // Parameterized Constructors
-
-    public User(int userId, String firstName, String lastName, String username, String password, String city, String mailId, String mobileNumber) {
-        this.userId = userId;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.username = username;
-        this.password = password;
-        this.city = city;
-        this.mailId = mailId;
-        this.mobileNumber = mobileNumber;
-    }
 
     // Getter and Setter Methods
     public int getUserId() {
@@ -90,18 +78,4 @@ public class User {
         this.mobileNumber = mobileNumber;
     }
 
-    // Overridden toString() method
-    @Override
-    public String toString() {
-        return "User{" +
-                "userId=" + userId +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", city='" + city + '\'' +
-                ", mailId='" + mailId + '\'' +
-                ", mobileNumber=" + mobileNumber +
-                '}';
-    }
 }

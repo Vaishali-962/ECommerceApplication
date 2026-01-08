@@ -14,6 +14,7 @@ public class AdminDaoImpl implements AdminDao {
     @Override
     public boolean adminLogin(String adminNameInput, String passwordInput){
         boolean isLoggedIn = false;
+        //query
         String query  = "SELECT admin_name, password FROM admins WHERE admin_name = ? AND password = ?";
         try(Connection con = DataSourceConfig.getConnection(); PreparedStatement ps = con.prepareStatement(query)){
             ps.setString(1,adminNameInput);
@@ -28,7 +29,7 @@ public class AdminDaoImpl implements AdminDao {
                 return true;
             }
             if (!isLoggedIn){
-                System.out.println("🛑Failed to Login 🛑");
+                System.out.println("🛑 Failed to Login 🛑");
             }
 
         }catch(Exception e){

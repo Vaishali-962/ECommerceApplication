@@ -13,22 +13,15 @@ import java.sql.Connection;
 
 
 public class UserDaoImpl implements UserDao {
-    // Queries
-    // 1. UserService Registration Query
-    public final String userRegistrationQuery =
-            "INSERT INTO registered_user_details(first_name, last_name, user_name, password, city, mail_Id, mobileNumber) VALUES (?,?,?,?,?,?,?)";
-    // 2. UserService Login Query
-    public final String userLoginQuery = "SELECT user_id, user_name FROM registered_user_details WHERE user_name = ? AND password = ?";
-    // 3. Product List Query
-    public final String productListQuery = "SELECT * FROM products";
-
-    // 5. viewCart
-
-    // 6. purchaseItem
-
-    @Override
+@Override
     public boolean userRegistration(User user) {
-        try(Connection con = DataSourceConfig.getConnection(); PreparedStatement ps = con.prepareStatement(userRegistrationQuery)){
+        String userRegistrationQuery =
+                "INSERT INTO registered_user_details" +
+                        "(first_name, last_name, user_name, password, city, mail_Id, mobileNumber) " +
+                        "VALUES (?,?,?,?,?,?,?)";
+
+        try(Connection con = DataSourceConfig.getConnection();
+            PreparedStatement ps = con.prepareStatement(userRegistrationQuery)){
             ps.setString(1, user.getFirstName());
             ps.setString(2, user.getLastName());
             ps.setString(3, user.getUsername());
@@ -44,13 +37,17 @@ public class UserDaoImpl implements UserDao {
                 return false;
             }
         }catch(SQLException e){
-            throw new JDBCException("Failed to registration");
+            System.out.println("❌ Failed to Register :: Password must contain atleast 8 digits.");
+            return false;
         }
     }
 
     @Override
     public boolean userLogin(User user) {
-        try(Connection con = DataSourceConfig.getConnection(); PreparedStatement ps = con.prepareStatement(userLoginQuery)){
+        String userLoginQuery = "SELECT user_id, user_name FROM registered_user_details " +
+                "WHERE user_name = ? AND password = ?";
+        try(Connection con = DataSourceConfig.getConnection();
+            PreparedStatement ps = con.prepareStatement(userLoginQuery)){
             ps.setString(1,user.getUsername());
             ps.setString(2, user.getPassword());
             ResultSet resultSet = ps.executeQuery();
@@ -78,7 +75,9 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void viewProductList() {
-        try(Connection con = DataSourceConfig.getConnection(); PreparedStatement ps = con.prepareStatement(productListQuery)){
+        String productListQuery = "SELECT * FROM products";
+        try(Connection con = DataSourceConfig.getConnection();
+            PreparedStatement ps = con.prepareStatement(productListQuery)){
         ResultSet resultSet = ps.executeQuery();
         while(resultSet.next()) {
             int productId = resultSet.getInt("product_id");
@@ -86,7 +85,6 @@ public class UserDaoImpl implements UserDao {
             String productDescription = resultSet.getString("product_description");
             int availableQuantity = resultSet.getInt("available_quantity");
             double price = resultSet.getDouble("price");
-
             System.out.println("Product Id >> " + productId);
             System.out.println("Product Name >> " + productName);
             System.out.println("Product Description >> " + productDescription);
@@ -180,7 +178,7 @@ public class UserDaoImpl implements UserDao {
                     int productId = resultSet.getInt("product_id");
                     String productName = resultSet.getString("product_name");
                     int quantity = resultSet.getInt("quantity");
-
+                    System.out.println("****----****----****----****----****----****");
                     System.out.println("Product Id :: " + productId);
                     System.out.println("Product Name :: " + productName);
                     System.out.println("Quantity :: " + quantity);

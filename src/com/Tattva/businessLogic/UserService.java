@@ -87,9 +87,7 @@ public class UserService implements RoleRegulator{
                 System.out.println("To View Product list >> Press 3");
                 System.out.println("To exit the application >> Press 0");
                 break;
-
         }
-
         return false;
     }
 
